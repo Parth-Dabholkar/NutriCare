@@ -4,10 +4,12 @@ import About from "./pages/About";
 import SignIn from "./pages/SignIn";
 import SignOut from "./pages/SignOut";
 import Resources from "./pages/Resources";
+import Header from "./components/Header";
 export default function App() {
   return (
     <div>
       <BrowserRouter>
+      <Header/>
         <Routes>
           <Route path="/" element={<Home/>}/>
           <Route path="/About" element={<About/>}/>
