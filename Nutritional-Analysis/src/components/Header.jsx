@@ -9,7 +9,7 @@ export default function Header() {
         </Link>
         <div className='flex gap-2 md:order-2'>
             <Link to="/Signin">
-                <Button gradientMonochrome="success">
+                <Button gradientMonochrome="success" outline>
                     Sign In
                 </Button>
             </Link>
