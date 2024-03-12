@@ -5,6 +5,7 @@ import SignIn from "./pages/SignIn";
 import SignOut from "./pages/SignOut";
 import Resources from "./pages/Resources";
 import Header from "./components/Header";
+import Signup from "./pages/Signup";
 export default function App() {
   return (
     <div>
@@ -15,6 +16,7 @@ export default function App() {
           <Route path="/About" element={<About/>}/>
           <Route path="/Signin" element={<SignIn/>}/>
           <Route path="/Signout" element={<SignOut/>}/>
+          <Route path="/Signup" element={<Signup/>}/>
           <Route path="/Resources" element={<Resources/>}/>
         </Routes>
       </BrowserRouter>
