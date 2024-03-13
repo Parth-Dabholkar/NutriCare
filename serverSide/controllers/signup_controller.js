@@ -1,7 +1,8 @@
 import User from "../models/user_model.js"
 import bcryptjs from 'bcryptjs' // For hashing. If someone hacks database they cannot see the passwords
+import { errorHandler } from "../utils/errors.js"
 
-export const signup = async (req, res) => {
+export const signup = async (req, res, next) => {
     console.log(req.body)
 
     //destructuring to get username, email and password from request body(post request)
@@ -10,7 +11,7 @@ export const signup = async (req, res) => {
     //if username,email,password field is empty, throw this error
     if(!username || !email || !password || username === '' || email === ''|| password === '')
     {
-        return res.status(400).json({ message : "All fields are required" })
+        next(errorHandler(400, 'All fields are required!!'))
     }
 
     const hashedPassword = bcryptjs.hashSync(password, 10) // hash the password for 10 rounds
@@ -30,7 +31,7 @@ export const signup = async (req, res) => {
     }
     catch(err)
     {
-        res.status(500).json({ message : err.message })//Throw error if username or password is same
+        next(err)//Throw error if username or password is same
     }
 
 }
