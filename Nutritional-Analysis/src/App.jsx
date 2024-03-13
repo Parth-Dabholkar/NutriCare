@@ -5,6 +5,7 @@ import SignIn from "./pages/SignIn";
 import SignOut from "./pages/SignOut";
 import Resources from "./pages/Resources";
 import Header from "./components/Header";
+import FooterComponent from "./components/FooterComponent";
 import Signup from "./pages/Signup";
 export default function App() {
   return (
@@ -19,6 +20,7 @@ export default function App() {
           <Route path="/Signup" element={<Signup/>}/>
           <Route path="/Resources" element={<Resources/>}/>
         </Routes>
+      <FooterComponent />
       </BrowserRouter>
     </div>
   )
