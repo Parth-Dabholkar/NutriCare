@@ -1,7 +1,7 @@
 export default function Home() {
   return (
     <div>
-      HELLO
+      HELLO parth vedant shirish
     </div>
   )
 }
