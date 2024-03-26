@@ -6,6 +6,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { signInSuccess, signInFailure, signInStart } from "../redux/user/userSlice.js";
 
+
 export default function SignIn() {
   const [formData, setFormData] = useState({})
   const dispatch = useDispatch()
@@ -85,7 +86,7 @@ export default function SignIn() {
                         </>
                       ) : <>SignIn<GoSignIn className=" ml-2 h-5 w-5" /></>
                     }</Button>
-                    <Button gradientDuoTone="pinkToOrange" outline><AiFillGoogleCircle className="mr-2 h-5 w-5"/>Sign-In with Google</Button>
+                    <Button gradientDuoTone="pinkToOrange" outline ><AiFillGoogleCircle className="mr-2 h-5 w-5"/>Sign-In with Google</Button>
                     <div className="flex gap-2">
                         <span>Don't have an account?</span>
                         <Link className=" text-blue-500" to="/Signup">Sign-Up</Link>
