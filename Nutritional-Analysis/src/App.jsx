@@ -7,6 +7,7 @@ import Resources from "./pages/Resources";
 import Header from "./components/Header";
 import FooterComponent from "./components/FooterComponent";
 import Signup from "./pages/Signup";
+import BMI from "./pages/BMI";
 export default function App() {
   return (
     <div>
@@ -19,6 +20,7 @@ export default function App() {
           <Route path="/Signout" element={<SignOut/>}/>
           <Route path="/Signup" element={<Signup/>}/>
           <Route path="/Resources" element={<Resources/>}/>
+          <Route path="/Resources/BMI" element={<BMI/>}/>
         </Routes>
       <FooterComponent />
       </BrowserRouter>
