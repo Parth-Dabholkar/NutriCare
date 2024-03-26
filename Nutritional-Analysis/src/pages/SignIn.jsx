@@ -3,11 +3,13 @@ import { GoSignIn } from "react-icons/go";
 import { Link, useNavigate } from "react-router-dom";
 import { AiFillGoogleCircle } from "react-icons/ai";
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { signInSuccess, signInFailure, signInStart } from "../redux/user/userSlice.js";
 
 export default function SignIn() {
   const [formData, setFormData] = useState({})
-  const [errorMessage, setErrorMessage] = useState(null)
-  const [loading, isLoading] = useState(false)
+  const dispatch = useDispatch()
+  const {loading, error : errorMessage} = useSelector(state => state.user)
   const navigate = useNavigate()
 
   const handleChange = (e) => {
@@ -20,11 +22,10 @@ export default function SignIn() {
       e.preventDefault()
       if(!formData.email || !formData.password)
       {
-        return setErrorMessage("Please fill out all the fields!!")
+        return dispatch(signInFailure('Please fill out all the fields!!'))
       }
       try{
-        isLoading(true)
-        setErrorMessage(null)
+        dispatch(signInStart())
         const res = await fetch('/api/serverSide/signin', {
           method : 'POST',
           headers : {'Content-Type' : 'application/json'},
@@ -33,18 +34,17 @@ export default function SignIn() {
         const data = await res.json()
         if(data.success === false)
         {
-          return setErrorMessage(data.message)
+          dispatch(signInFailure(data.message))
         }
-        isLoading(false)
         if(res.ok)
         {
+          dispatch(signInSuccess(data))
           navigate('/')
         }
       }
-      catch(err)
+      catch(error)
       {
-        setErrorMessage(err.message)
-        isLoading(false)
+        dispatch(signInFailure(error.message))
       }
   }
   return (
