@@ -55,11 +55,32 @@ export default function Header() {
                     About
                 </Link>
             </Navbar.Link>
-            <Navbar.Link active={path === '/Resources'} as={'div'}>
-                <Link to="/Resources">
+            {currentUser ? (
+                <Navbar.Link>
+                <Dropdown label = 'Resources' inline>
+                    <Dropdown.Item>
+                        <Link to="/Resources/BMI">
+                            BMI Calculator
+                        </Link> 
+                    </Dropdown.Item>
+                    <Dropdown.Item>
+                        <Link to="/Resources/Create Recipe">
+                            Create Recipe
+                        </Link> 
+                    </Dropdown.Item>
+                    <Dropdown.Item>
+                        <Link to="/Resources/ChatBot">
+                            Chat Bot
+                        </Link> 
+                    </Dropdown.Item>
+                </Dropdown>
+            </Navbar.Link>
+            ) : (
+                <Navbar.Link disabled>
                     Resources
-                </Link>
-            </Navbar.Link>   
+                </Navbar.Link>
+            )}
+            
         </Navbar.Collapse>
     </Navbar>
   )

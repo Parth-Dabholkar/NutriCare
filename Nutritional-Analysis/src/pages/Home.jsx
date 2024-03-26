@@ -1,7 +1,7 @@
 export default function Home() {
   return (
     <div>
-      HELLO parth vedant shirish
+      TO BE DONE SOON!
     </div>
   )
 }

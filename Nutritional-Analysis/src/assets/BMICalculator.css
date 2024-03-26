@@ -1,0 +1,161 @@
+.bmi-calculator {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2vw;
+    font-family: 'Arial', sans-serif;
+    justify-content: center;
+    font-size: 2vw;
+    width: 80%;
+    max-width: 600px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    position: relative; /* Ensure relative positioning for absolute elements */
+    margin: 10vh auto;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+}
+
+/* Add semi-transparent overlay only on background image */
+.bmi-calculator::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.2); /* Adjust opacity as needed */
+    z-index: 1; /* Ensure the overlay is above the background image */
+    border-radius: 20px;
+}
+
+/* Ensure other elements are above the overlay */
+.input-container,
+.results-container,
+.warning {
+    position: relative;
+    z-index: 2; /* Place other elements above the overlay */
+}
+
+/* Adjust styles for other elements */
+.input-container {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin-bottom: 1vw; /* Reduce margin to avoid second line */
+}
+
+.input-field {
+    margin-bottom: 0.5vw; /* Reduce margin */
+}
+
+.input-field label {
+    margin-bottom: 0.3vw; /* Reduce margin */
+    font-size: 1.3vw; /* Reduce font size */
+}
+
+.input-field input {
+    width: 100%;
+    padding: 0.8vw; /* Reduce padding */
+    font-size: 1.1vw; /* Reduce font size */
+}
+
+.results-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 1.3vw;
+}
+
+.results-container .bmi-result span {
+    font-size: 2vw; /* Reduce size of BMI result */
+    margin-bottom: 0.8vw; /* Reduce margin */
+}
+
+.results-container .bmi-category {
+    margin-bottom: 1vw; /* Reduce margin */
+    font-size: 1.3vw; /* Reduce font size */
+}
+
+.meter-container {
+    position: relative;
+    width: 80%; /* Increase width of the meter */
+    height: 6vw; /* Increase height of the meter */
+    border-radius: 3.5vw; /* Adjust border radius */
+    overflow: hidden;
+    background: #dfdfdf;
+    margin-bottom: 1.3vw; /* Reduce margin */
+}
+
+.meter-fill {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 50%;
+    background: linear-gradient(to right, #f00, #ff0, #0f0, #00f);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.1vw; /* Reduce font size */
+}
+
+.meter-fill span {
+    font-size: 1.1vw; /* Keep font size consistent */
+}
+
+.warning {
+    margin-top: 1vw; /* Reduce margin */
+    padding: 0.8vw 1.5vw; /* Reduce padding */
+    background: red;
+    color: white;
+    border-radius: 0.8vw;
+    font-size: 1.3vw; /* Reduce font size */
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+    .bmi-calculator {
+        font-size: 4vw; /* Adjust font size */
+    }
+
+    .input-field label {
+        font-size: 3vw; /* Adjust font size */
+    }
+
+    .input-field input,
+    .meter-fill,
+    .warning {
+        font-size: 2.5vw; /* Adjust font size */
+    }
+
+    .meter-container {
+        height: 10vw; /* Adjust height of the meter */
+        border-radius: 5vw; /* Adjust border radius */
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .bmi-calculator {
+        font-size: 6vw; /* Adjust font size */
+        max-width: 90%; /* Adjust maximum width */
+        margin: 8vh auto; /* Adjust margin from top */
+    }
+
+    .input-field label {
+        font-size: 4vw; /* Adjust font size */
+    }
+
+    .input-field input,
+    .meter-fill,
+    .warning {
+        font-size: 3vw; /* Adjust font size */
+    }
+
+    .meter-container {
+        height: 15vw; /* Adjust height of the meter */
+        border-radius: 7.5vw; /* Adjust border radius */
+    }
+}
