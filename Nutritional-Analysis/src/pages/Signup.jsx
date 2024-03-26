@@ -3,12 +3,45 @@ import { GoSignIn } from "react-icons/go";
 import { Link, useNavigate } from "react-router-dom";
 import { AiFillGoogleCircle } from "react-icons/ai";
 import { useState } from "react";
+import { signInSuccess } from "../redux/user/userSlice.js";
+import { GoogleAuthProvider, signInWithPopup, getAuth } from 'firebase/auth'
+import { app } from "../firebase.js";
+import { useDispatch } from "react-redux";
 
 export default function Signup() {
   const [formData, setFormData] = useState({})
   const [errorMessage, setErrorMessage] = useState(null)
   const [loading, isLoading] = useState(false)
   const navigate = useNavigate()
+  const dispatch = useDispatch()
+
+  const auth = getAuth(app)
+  const handleGoogleClick = async () => {
+    const provider = new GoogleAuthProvider()
+    provider.setCustomParameters({ prompt : 'select_account' })
+    try{
+      const resultsFromGoogle = await signInWithPopup(auth, provider)
+      const res = await fetch('/api/serverSide/google', {
+        method : 'POST',
+        headers : {'Content-Type' : 'application/json'},
+        body : JSON.stringify({
+          name: resultsFromGoogle.user.displayName,
+          email: resultsFromGoogle.user.email,
+          googlephotoURL: resultsFromGoogle.user.photoURL
+        })
+      })
+      const data = await res.json()
+      if(res.ok)
+      {
+        dispatch(signInSuccess(data))
+        navigate('/')
+      }
+    }
+    catch(error)
+    {
+      console.log(error)
+    }
+  }
 
   const handleChange = (e) => {
     // console.log(e.target.value) : Gives the changes made in the input
@@ -89,7 +122,7 @@ export default function Signup() {
                         </>
                       ) : <>SignUp<GoSignIn className=" ml-2 h-5 w-5" /></>
                     }</Button>
-                    <Button gradientDuoTone="pinkToOrange" outline><AiFillGoogleCircle className="mr-2 h-5 w-5"/>Sign-In with Google</Button>
+                    <Button gradientDuoTone="pinkToOrange" outline onClick={handleGoogleClick}><AiFillGoogleCircle className="mr-2 h-5 w-5"/>Sign-In with Google</Button>
                     <div className="flex gap-2">
                         <span>Have an account?</span>
                         <Link className=" text-blue-500" to="/SignIn">Sign-In</Link>
