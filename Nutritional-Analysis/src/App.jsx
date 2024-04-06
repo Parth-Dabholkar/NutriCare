@@ -8,6 +8,7 @@ import Header from "./components/Header";
 import FooterComponent from "./components/FooterComponent";
 import Signup from "./pages/Signup";
 import BMI from "./pages/BMI";
+import FoodAnalysis from "./pages/FoodAnalysis";
 export default function App() {
   return (
     <div>
@@ -21,6 +22,7 @@ export default function App() {
           <Route path="/Signup" element={<Signup/>}/>
           <Route path="/Resources" element={<Resources/>}/>
           <Route path="/Resources/BMI" element={<BMI/>}/>
+          <Route path="/Resources/FoodAnalysis" element={<FoodAnalysis/>}/>
         </Routes>
       <FooterComponent />
       </BrowserRouter>
