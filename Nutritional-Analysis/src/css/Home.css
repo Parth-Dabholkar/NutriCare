@@ -1,0 +1,59 @@
+.container
+{
+    
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    margin-bottom: 300px;
+    border-color: blue;
+  
+     
+
+}
+ 
+.navbar
+{
+    height: 300px;
+}
+ 
+.option{
+    padding: 10px;
+    border-style: solid;
+    border-width: 3px;
+    margin-top: 10px;
+
+}
+ 
+.h1{
+    padding-bottom: 30px;
+    font-size: 25px;
+}
+.submit-button
+{
+    margin-left: 150px;
+    margin-top: 45px;
+    border-width: 3px;
+    border-style: solid;
+    border-color: rgb(50, 149, 91);
+    padding: 8px;
+    border-radius: 15px;
+}
+.submit-button:hover
+{
+     color:white;
+     background-color: rgb(50, 149, 91);
+      
+      
+
+}
+form{
+    padding-left: 250px;
+       
+}
+.fade-out
+{
+    opacity: 0;
+    transition: opacity 0.5s ease-out;
+}
