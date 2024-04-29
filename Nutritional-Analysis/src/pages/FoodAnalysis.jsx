@@ -15,6 +15,9 @@ export default function FoodAnalysis() {
     const [k, setK] = useState(0)
     const [cho, setCho] = useState(0)
     const [sugar, setSugar] = useState(0)
+    const [fibre, setFibre] = useState(0)
+    const [nutriScore, setNutriScore] = useState(0)
+    const [txtCol, setTxtCol] = useState("")
 
     const getAnalysis = async (e) => {
         e.preventDefault()
@@ -31,6 +34,14 @@ export default function FoodAnalysis() {
             })
 
             const nutrition = result['data'][0]
+            const prt = Math.round(((result['data'][0]['protein_g'])*100)/100)
+            const satFat = Math.round(((result['data'][0]['fat_saturated_g'])*100)/100)
+            const sod = Math.round(((result['data'][0]['sodium_mg'])*0.001*100)/100)
+            const sug = Math.round(((result['data'][0]['sugar_g'])*100)/100)
+            const fib = Math.round(((result['data'][0]['fiber_g'])*100)/100)
+            const calor = result['data'][0]['calories']
+
+            console.log(fib)
 
             const barData = [
                 { name : 'Carbs', amt : Math.round(nutrition.carbohydrates_total_g * 100)/100},
@@ -52,6 +63,13 @@ export default function FoodAnalysis() {
             setCho(Math.round(nutrition.cholesterol_mg * 0.001 * 100)/100)
             setSugar(Math.round(nutrition.sugar_g * 100)/100)
             setCalorie(nutrition.calories)
+            setFibre(Math.round(nutrition.fiber_g * 100)/100)
+            const finScore = ((prt/calor)*10)+((fib/calor)*5)-((sug/calor)*8)-((satFat/calor)*10)-((sod)*5)
+            console.log(finScore)
+            setNutriScore(finScore)
+
+            const newCol = finScore < 0.35 ? 'text-red-500' : finScore <= 0.45 ? 'text-yellow-500' : 'text-green-500'
+            setTxtCol(newCol) 
 
             setDatas(barData)
       }
@@ -59,12 +77,12 @@ export default function FoodAnalysis() {
   return (
     <div>
         {/* Search Form */}
-        <div className="m-2">
+        <div className=" m-2 flex flex-col justify-evenly items-center gap-4 w-screen">
             <div className=" max-w-5xl mx-auto text-center md:text-6xl text-xl m-8 font-mono font-bold">
                 <h1 className=""><span className='px-2 py-1 bg-gradient-to-r from-blue-700 via-cyan-700 to-green-500 rounded-lg text-white'>Analyse</span> the Nutrition in your Food</h1>
             </div>
   
-            <form className="max-w-md mx-auto">   
+            <form className=" w-[600px] mx-auto">   
                 <label htmlFor="default-search" className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
                 <div className="relative">
                     <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
@@ -80,6 +98,21 @@ export default function FoodAnalysis() {
                      className="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Analyze</button>
                 </div>
             </form>
+
+            <div>
+                <Card
+                    className="max-w-sm"
+                    imgAlt="Meaningful alt text for an image that is not purely decorative"
+                    imgSrc="../images/nutriScore.jpg"
+                    >
+                    <h5 className={`text-2xl font-bold tracking-tight text-center ${txtCol}`}>
+                        {nutriScore} 
+                    </h5>
+                    <p className="font-normal text-gray-700 dark:text-gray-400 text-center">
+                        Score
+                    </p>
+                    </Card>
+            </div>
 
         </div>
         <div className=" mx-auto m-8 flex max-w-7xl gap-4">
@@ -162,17 +195,17 @@ export default function FoodAnalysis() {
             <div className=" flex flex-1 flex-col gap-4">
                 <div>
                     <Card
-                className="max-w-sm"
-                imgAlt="Meaningful alt text for an image that is not purely decorative"
-                imgSrc="../images/dietrec.jpeg"
-                >
-                <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                    {calorie} cal
-                </h5>
-                <p className="font-normal text-gray-700 dark:text-gray-400">
-                    Calories
-                </p>
-                </Card>
+                    className="max-w-sm"
+                    imgAlt="Meaningful alt text for an image that is not purely decorative"
+                    imgSrc="../images/dietrec.jpeg"
+                    >
+                    <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                        {calorie} cal
+                    </h5>
+                    <p className="font-normal text-gray-700 dark:text-gray-400">
+                        Calories
+                    </p>
+                    </Card>
                 </div>
                 <div>
                         <BarChart
