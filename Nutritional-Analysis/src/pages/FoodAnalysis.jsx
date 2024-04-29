@@ -1,24 +1,27 @@
 import { Card } from "flowbite-react";
 import { PieChart, Pie, Legend, Tooltip, ResponsiveContainer } from 'recharts';
-import data from '../assets/data.js';
+
 import { useState } from "react";
 
-const [search,setSearch] = useState('');
 
-const data01 = [
-    { name: 'Carbohydrates', value: 400 },
-    { name: 'Fats', value: 300 },
-    { name: 'Protiens', value: 300 },
-    { name: 'Saturated Fats', value: 200 },
-    { name: 'Sodium', value: 200 },
-    { name: 'Pottasium', value: 200 },
-    { name: 'Cholestrol', value: 200 },
-    { name: 'Sugar', value: 200 },
-  ];
+
 
 export default function FoodAnalysis() {
+    const [search,setSearch] = useState('');
+    const data01 = [
+        { name: 'Carbohydrates', value: 400 },
+        { name: 'Fats', value: 300 },
+        { name: 'Protiens', value: 300 },
+        { name: 'Saturated Fats', value: 200 },
+        { name: 'Sodium', value: 200 },
+        { name: 'Pottasium', value: 200 },
+        { name: 'Cholestrol', value: 200 },
+        { name: 'Sugar', value: 200 }, 
+      ];
+    
   return (
     <div>
+        
         {/* Search Form */}
         <div className="m-2">
             <div className=" max-w-5xl mx-auto text-center md:text-6xl text-xl m-8 font-mono font-bold">
