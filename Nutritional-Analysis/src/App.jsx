@@ -10,6 +10,7 @@ import Signup from "./pages/Signup";
 import BMI from "./pages/BMI";
 import FoodAnalysis from "./pages/FoodAnalysis";
 import ChatBot from "./pages/ChatBot";
+import DietRecommender from "./pages/DietRecommender";
 export default function App() {
   return (
     <div>
@@ -25,6 +26,7 @@ export default function App() {
           <Route path="/Resources/BMI" element={<BMI/>}/>
           <Route path="/Resources/FoodAnalysis" element={<FoodAnalysis/>}/>
           <Route path="/Resources/ChatBot" element={<ChatBot/>}/>
+          <Route path="/Resources/DietRecommender" element={<DietRecommender/>}/>
         </Routes>
       <FooterComponent />
       </BrowserRouter>

@@ -64,8 +64,8 @@ export default function Header() {
                         </Link> 
                     </Dropdown.Item>
                     <Dropdown.Item>
-                        <Link to="/Resources/CreateRecipe">
-                            Create Recipe
+                        <Link to="/Resources/DietRecommender">
+                            Diet Recommender
                         </Link> 
                     </Dropdown.Item>
                     <Dropdown.Item>

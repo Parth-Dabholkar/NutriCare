@@ -1,10 +1,11 @@
 import { useState } from "react"
 import "../assets/ChatBot.css"
 import axios from "axios"
+import ReactMarkdown from 'react-markdown'
 
 export default function ChatBot() {
   const [value, setValue] = useState("");
-  const [answer, setAnswer] = useState("Loading...")
+  const [answer, setAnswer] = useState("Your Answer will be displayed here..")
   const [error, setError] = useState("");
 
   const surpriseOptions = [
@@ -73,23 +74,27 @@ export default function ChatBot() {
     }
   }
   return (
-    <div className="app">
-    <p>What do you want to know? Ask NutriCare ❤️✨
-    <button className="surprise" onClick={surprise}>Surprise me</button>
+    <div className=" flex flex-col justify-center items-center gap-5 m-14">
+      <div className=" max-w-5xl mx-auto text-center md:text-6xl text-xl m-8 font-mono font-bold">
+        <h1 className=""><span className='px-2 py-1 bg-gradient-to-r from-blue-700 via-cyan-700 to-green-500 rounded-lg text-white'>Chat</span>Bot</h1>
+      </div>
+    <p className=" text-3xl">What do you want to know? Ask NutriCare ❤️✨
+    <button className=" bg-gradient-to-r from-cyan-500 to-blue-500 text-white p-2 rounded-xl text-center text-[20px]" onClick={surprise}>Surprise me</button>
     </p>
-    <div className="input-container">
+    <div className=" flex justify-evenly gap-2">
       <input 
+        className=" text-md block w-[780px] p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
         value={value}
         placeholder="Type your question here"
         onChange={(e) => setValue(e.target.value)} 
         onKeyDown={handleKeyDown} />
 
-      {!error && <button onClick={getReponse}>Ask Me</button>}
+      {!error && <button className="bg-gradient-to-r from-cyan-500 to-blue-500 text-white p-2 rounded-xl text-center text-[20px]" onClick={getReponse}>Ask Me</button>}
       {error && <button onClick={clear}>Clear</button>}
     </div>
     {error && <p>{error}</p>}
-    <div className="search-result">
-      <pre>{answer}</pre>
+    <div className=" border p-2 rounded-md bg-slate-100">
+      <ReactMarkdown>{answer}</ReactMarkdown>
     </div>
 </div>
   )
