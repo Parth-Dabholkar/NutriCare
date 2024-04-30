@@ -40,7 +40,9 @@ export default function BMI() {
 
     return (
         <div className="bmi-calculator">
-            <h1>BMI Calculator</h1>
+            <div className=" max-w-5xl mx-auto text-center md:text-6xl text-xl m-8 font-mono font-bold">
+                <h1 className=""><span className='px-2 py-1 bg-gradient-to-r from-blue-700 via-cyan-700 to-green-500 rounded-lg text-white'>BMI</span> Calculator</h1>
+            </div>
             <div className="input-container">
                 <div className="input-field">
                     <label htmlFor="weight">Weight (kg)</label>

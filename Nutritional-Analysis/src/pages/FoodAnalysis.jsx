@@ -101,7 +101,7 @@ export default function FoodAnalysis() {
 
             <div>
                 <Card
-                    className="max-w-sm"
+                    className="max-w-lg"
                     imgAlt="Meaningful alt text for an image that is not purely decorative"
                     imgSrc="../images/nutriScore.jpg"
                     >
@@ -112,6 +112,20 @@ export default function FoodAnalysis() {
                         Score
                     </p>
                     </Card>
+                    <div className=" flex flex-col justify-evenly items-center">
+                        <div class="inline-flex items-center m-2">
+                            <span class="size-4 inline-block bg-red-500 rounded-full me-2"></span>
+                            <span class="text-black"> less than 0.35 : To be consumed occasionaly</span>
+                        </div>
+                        <div class="inline-flex items-center m-2">
+                            <span class="size-4 inline-block bg-yellow-500 rounded-full me-2"></span>
+                            <span class="text-black"> between 0.35 and 0.45 : To be consumed in a controlled manner</span>
+                        </div>
+                        <div class="inline-flex items-center m-2">
+                            <span class="size-4 inline-block bg-green-500 rounded-full me-2"></span>
+                            <span class="text-black"> above 0.45 : Healthy Food</span>
+                        </div>
+                    </div>
             </div>
 
         </div>

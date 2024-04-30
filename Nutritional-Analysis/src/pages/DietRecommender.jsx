@@ -289,7 +289,10 @@ const DietRecommender = () => {
           <h2 className="text-xl font-bold">Meal Plan</h2>
           <ul className="space-y-4">
             {meals.map((meal, index) => (
-              <li key={index} className="flex flex-col md:flex-row md:items-center md:justify-between">
+              <li key={index} className="flex flex-col md:flex-row md:items-center md:justify-between border-b-2 w-[700px]">
+                <div className=" m-4">
+                  {index == 0 ? <p>Breakfast</p> : index == 1 ? <p>Lunch</p> : <p>Dinner</p>}
+                </div>
                 <div>
                   <h3 className="text-lg font-semibold">{meal.title}</h3>
                   <p>{meal.description}</p>
