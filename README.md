@@ -28,7 +28,7 @@ NutriCare is a robust and user-friendly nutritional analysis system tailored for
 ![loginNutri](https://github.com/user-attachments/assets/09c0f7ea-1b9e-4044-9c21-e8239e309a9e)
 
 ### Home Page
-![homeNutri](https://github.com/user-attachments/assets/b1e1c0dd-3319-428b-8927-2d36dd6f122a)
+![homeNutri](https://github.com/user-attachments/assets/821bff94-0d57-4cfd-896c-8b78abd5c720)
 
 ### Body Mass Index Calculator
 ![bmiNutri](https://github.com/user-attachments/assets/ac2c30a4-00c6-41bd-a109-2f936405e46e)
